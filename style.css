@@ -1,0 +1,20 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 0px;
+    box-sizing: border-box;
+}
+
+h1{
+    font-family: 'Alata', sans-serif;
+    font-size: 3vw;
+}
+
+.grid-container{
+    display: grid;
+    border: 2px black solid;
+    width: 500px;
+    height: 500px;
+}
