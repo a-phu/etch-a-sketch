@@ -5,11 +5,11 @@ body{
     align-items: center;
     gap: 10px 0px;
     box-sizing: border-box;
+    font-family: 'Alata', sans-serif;
 }
 
 h1{
-    font-family: 'Alata', sans-serif;
-    font-size: 3vw;
+    font-size: 35px;
 }
 
 .grid-container{
@@ -17,4 +17,10 @@ h1{
     border: 2px black solid;
     width: 500px;
     height: 500px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
 }
