@@ -7,14 +7,27 @@ createGrid(howManySquaresPerSide());
 //select all grid items
 let gridItems = document.querySelectorAll(".grid-container .gridItem");
 
+//declare global variable colour for pen colour
+let colour = '';
+
 //add event listeners to grid items to change colour when mouseover
 addMouseoverEventListenerForGridItem(gridItems);
 
-//select clear sketch button
-const clearSketchBtn = document.querySelector("button");
-
-//add event listener to button to clear sketch
+//select clear sketch button and add event listener
+const clearSketchBtn = document.querySelector("#clearSketch");
 clearSketchBtn.addEventListener('click',clearSketch);
+
+//select grid density button and add event listener
+const gridDensityBtn = document.querySelector("#changeGridDensity");
+gridDensityBtn.addEventListener('click',changeGridDensity);
+
+//select colour picker input
+const colourPickerInput = document.querySelector("#colourPicker");
+
+//add event listener which will set global variable colour to whatever user has chosen
+colourPickerInput.addEventListener("change", e => {
+    colour = e.target.value;
+});
 
 //function to return prompt of how many squares
 function howManySquaresPerSide(){
@@ -33,10 +46,16 @@ function createGrid(noOfSquares){
 }
 
 //function to clear sketch and prompt user for new number of grid items
-function clearSketch(){
+function changeGridDensity(){
     createGrid(howManySquaresPerSide());
     gridItems = document.querySelectorAll(".grid-container .gridItem");
     addMouseoverEventListenerForGridItem(gridItems);
+}
+
+function clearSketch(){
+    gridItems.forEach((item) =>{
+        item.style.backgroundColor = "white";
+    });
 }
 
 //remove all divs from grid container
@@ -56,5 +75,5 @@ function addMouseoverEventListenerForGridItem(gridItems){
 
 //function to change style property of grid items
 function changeColour(){
-    this.style.backgroundColor = "thistle";
+    this.style.backgroundColor = colour;
 }

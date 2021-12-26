@@ -11,7 +11,14 @@
 </head>
 <body>
     <div class = "header"><h1>etch-a-sketch!</h1></div>
-    <button>clear sketch</button>
+    <div class = "buttons">
+        <button id = "clearSketch">clear sketch</button>
+        <button id = "changeGridDensity">change grid density</button>
+        <div class = "colourPickerContainer">
+            <label for = "colourPicker">Pen colour:</label>
+            <input type = "color" id = "colourPicker" value = "#D8BFD8">
+        </div>
+    </div>
     <div class = "grid-container"></div>
     <footer>Created by Annabel Phu</footer>
 </body>
