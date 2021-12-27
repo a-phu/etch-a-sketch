@@ -9,3 +9,4 @@ It is a simple "etch-a-sketch" game where users can:
 * clear their sketch
 * change the number of squares inside the grid by dragging the slider across
 
+Live version is [here](https://a-phu.github.io/etch-a-sketch/).
