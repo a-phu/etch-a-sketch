@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Etch-a-Sketch</title>
+    <title>etch-a-sketch!</title>
     <meta charset = "UTF-8">
     <script src = "script.js"defer></script>
     <link rel = "stylesheet" href = "style.css">
@@ -10,16 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Dosis&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class = "header"><h1>etch-a-sketch!</h1></div>
-    <div class = "buttons">
-        <button id = "clearSketch">clear sketch</button>
-        <button id = "changeGridDensity">change grid density</button>
-        <div class = "colourPickerContainer">
-            <label for = "colourPicker">Pen colour:</label>
-            <input type = "color" id = "colourPicker" value = "#D8BFD8">
+    <div class = "left">
+        <div class = "header"><h1>etch-a-sketch!</h1></div>
+        <div class = "buttons">
+            <div class = "colourPickerContainer">
+                <input type = "color" id = "colourPicker" value = "#D8BFD8">
+            </div>
+            <button id = "colourOrRainbowMode">colour mode</button>
+            <button id = "eraser">eraser</button>
+            <button id = "clearSketch">clear sketch</button>
+            <p id = "sliderValue"></p>
+            <input type = "range" id = "gridDensitySlider" min = "2" max = "50" value = "25">
         </div>
     </div>
     <div class = "grid-container"></div>
-    <footer>Created by Annabel Phu</footer>
+    <footer>Created by Annabel Phu <a href = "https://github.com/a-phu"><img src = "GitHub-Mark-120px-plus.png"></a></footer>
 </body>
 </html>

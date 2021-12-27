@@ -1,40 +1,76 @@
-//select gridContainer - global
 const gridContainer = document.querySelector(".grid-container");
 
-//let number of sides be input from user
-createGrid(howManySquaresPerSide());
+let colour = "#D8BFD8";
+let gridDensity = "25";
 
-//select all grid items
+createGrid(gridDensity);
+
 let gridItems = document.querySelectorAll(".grid-container .gridItem");
 
-//declare global variable colour for pen colour
-let colour = '';
+changeToColourMode();
 
-//add event listeners to grid items to change colour when mouseover
-addMouseoverEventListenerForGridItem(gridItems);
-
-//select clear sketch button and add event listener
-const clearSketchBtn = document.querySelector("#clearSketch");
-clearSketchBtn.addEventListener('click',clearSketch);
-
-//select grid density button and add event listener
-const gridDensityBtn = document.querySelector("#changeGridDensity");
-gridDensityBtn.addEventListener('click',changeGridDensity);
-
-//select colour picker input
 const colourPickerInput = document.querySelector("#colourPicker");
+const colourOrRainbowModeBtn = document.querySelector('#colourOrRainbowMode');
+const eraserBtn = document.querySelector("#eraser");
+const clearSketchBtn = document.querySelector("#clearSketch");
+const sliderValueText = document.querySelector('#sliderValue');
+const gridDensitySlider = document.querySelector('#gridDensitySlider');
 
-//add event listener which will set global variable colour to whatever user has chosen
+sliderValueText.textContent = gridDensity + " x " + gridDensity;
+
 colourPickerInput.addEventListener("change", e => {
     colour = e.target.value;
 });
+colourOrRainbowModeBtn.addEventListener('click', toggleColourOrRainbowModeText);
+clearSketchBtn.addEventListener('click',clearSketch);
+gridDensitySlider.addEventListener('change', () =>{
+    gridDensity = gridDensitySlider.value;
+    changeGridDensity();
+    sliderValueText.textContent = gridDensity + " x " + gridDensity;
+    resetButtonColor();
+})
+eraserBtn.addEventListener('click', useEraser);
 
-//function to return prompt of how many squares
-function howManySquaresPerSide(){
-    return prompt("How many squares per side?");
+function resetButtonColor(){
+    eraserBtn.style.backgroundColor = "transparent";
+    colourOrRainbowModeBtn.style.backgroundColor = "#e8effa";
 }
 
-//create grid with no of squares per row passed as parameter
+
+function toggleColourOrRainbowModeText(){
+    resetButtonColor();
+    if(colourOrRainbowModeBtn.textContent == "colour mode"){
+        colourOrRainbowModeBtn.textContent = "rainbow mode";
+        changeToRainbowMode();
+    } else{
+        colourOrRainbowModeBtn.textContent = "colour mode";
+        changeToColourMode();
+    }
+}
+
+function useEraser(){
+    console.log(eraserBtn.style.backgroundColor);
+    if(colour != "transparent"){
+        eraserBtn.style.backgroundColor = "#e8effa";
+        colourOrRainbowModeBtn.style.backgroundColor = "transparent";
+        gridItems.forEach((item) =>{
+            item.addEventListener('mouseover', () => item.style.backgroundColor = "white");
+        });
+    }   
+}
+
+function checkColourOrRainbowMode(){
+    if(colourOrRainbowModeBtn.textContent == "colour mode"){
+        changeToColourMode(gridItems);
+    } else if(colourOrRainbowModeBtn.textContent == "rainbow mode"){
+        changeToRainbowMode(gridItems);
+    }
+}
+
+function colourRandomiser(){
+    return '#'+Math.floor(Math.random()*16777215).toString(16);
+}
+
 function createGrid(noOfSquares){
     resetGrid();
     gridContainer.style.setProperty('grid-template-columns', 'repeat(' + noOfSquares + ', auto)');
@@ -45,35 +81,36 @@ function createGrid(noOfSquares){
     }
 }
 
-//function to clear sketch and prompt user for new number of grid items
 function changeGridDensity(){
-    createGrid(howManySquaresPerSide());
+    createGrid(gridDensity);
     gridItems = document.querySelectorAll(".grid-container .gridItem");
-    addMouseoverEventListenerForGridItem(gridItems);
+    checkColourOrRainbowMode();
 }
 
 function clearSketch(){
     gridItems.forEach((item) =>{
-        item.style.backgroundColor = "white";
+        item.style.backgroundColor = "transparent";
     });
+    resetButtonColor();
+    checkColourOrRainbowMode();
 }
 
-//remove all divs from grid container
 function resetGrid(){
     while(gridContainer.firstChild){
         gridContainer.removeChild(gridContainer.firstChild);
     }
 }
 
-//function to add event listeners to grid items
-function addMouseoverEventListenerForGridItem(gridItems){
+function changeToColourMode(){
     gridItems.forEach((item) =>{
-        item.addEventListener('mouseover',changeColour);
-        item.style.border = "2px thistle solid";
+        item.addEventListener('mouseover', () => item.style.backgroundColor = colour);
+        item.style.border = "1px #e8effa solid";
     });
 }
 
-//function to change style property of grid items
-function changeColour(){
-    this.style.backgroundColor = colour;
+function changeToRainbowMode(){
+    gridItems.forEach((item) =>{
+        item.addEventListener('mouseover', () => item.style.backgroundColor = colourRandomiser());
+        item.style.border = "1px #e8effa solid";
+    });
 }
