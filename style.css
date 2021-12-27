@@ -9,21 +9,25 @@ body{
     margin-top: 50px;
 }
 
-.left{
-    width: 250px;
-    text-align: center;
-}
+
 
 h1{
     font-size: 35px;
+}
+
+/* MAIN */
+
+.settings{
+    width: 250px;
+    text-align: center;
 }
 
 .grid-container{
     display: grid;
     margin-top: 50px;
     border: 2px black solid;
-    width: 500px;
-    height: 500px;
+    min-width: 500px;
+    min-height: 500px;
 }
 
 .buttons{
@@ -40,27 +44,13 @@ button{
     text-align: center;
     width: 175px;
     background-color: transparent;
-    font-family: 'Alata', sans-serif;
+    font-family: inherit;
     border-radius: 10px;
     font-size: 18px;
 }
 
-footer{
-    position: absolute;
-    bottom: 0;
-    padding: 15px;
-    text-align:center;
-    display: flex;
-    gap: 10px;
-}
-
-footer img{
-    max-width: 20px;
-}
-
-footer img:hover{
-    transition-duration: 1s;
-    transform: scale(1.2);
+button:hover{
+    transform: scale(1.05);
 }
 
 #colourPicker{
@@ -78,6 +68,8 @@ footer img:hover{
 #colourOrRainbowMode{
     background-color: #e8effa;
 }
+
+
 #gridDensitySlider{
     -webkit-appearance: none;
     background: transparent; 
@@ -86,6 +78,11 @@ footer img:hover{
     width: 171px;
     height: 10px;
 }
+
+#gridDensitySlider:hover{
+    transform: scale(1.05);
+}
+
 
 #gridDensitySlider::-webkit-slider-thumb{
     -webkit-appearance: none;
@@ -101,3 +98,20 @@ footer img:hover{
     margin-top: 10px;
 }
 
+/*FOOTER*/
+footer{
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+    text-align:center;
+    display: flex;
+    gap: 10px;
+}
+
+footer img{
+    max-width: 20px;
+}
+
+footer img:hover{
+    transform: scale(1.2);
+}
