@@ -11,5 +11,5 @@ It is a simple "etch-a-sketch" game where users can:
 
 Live version is [here](https://a-phu.github.io/etch-a-sketch/).
 
-![image](https://user-images.githubusercontent.com/46221612/151526213-b54dab63-f40c-44b3-adbb-15acfbaec762.png)
+![image](https://user-images.githubusercontent.com/46221612/151526326-cfff29b6-d1a9-43d0-8f77-1fc965c74df9.png)
 
