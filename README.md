@@ -10,3 +10,6 @@ It is a simple "etch-a-sketch" game where users can:
 * change the number of squares inside the grid by dragging the slider across
 
 Live version is [here](https://a-phu.github.io/etch-a-sketch/).
+
+![image](https://user-images.githubusercontent.com/46221612/151526213-b54dab63-f40c-44b3-adbb-15acfbaec762.png)
+
